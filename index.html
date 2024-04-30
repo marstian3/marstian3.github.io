@@ -13,11 +13,9 @@
         <nav>
             <img src="images/totoro.jpg" width="80" height="150"class="logo">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Education</a></li>
-                <li><a href="#">Experience</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="header-text">
@@ -39,15 +37,27 @@
                     I made this website to improve my skills in web development, and to have some fun. I like to play badminton, make music on my violin, and read manga!</p>
 
                 <div class="tab-titles">
-                    <p class="tab-links active-link">Skills</p>
-                    <p class="tab-links">Experience</p>
-                    <p class="tab-links">Education</p>
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
                 </div>
-                <div class="tab-contents">
+                <div class="tab-contents active-tab" id="skills">
                     <ul>
                         <li><span>LOL/TFT</span><br>Emerald/Diamond</li>
                         <li><span>Shorts/Tiktok</span><br>ivantuwu</li>
                         <li><span>Chemistry/Physics</span><br>Making Bombs</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>May 2024 - September 2024</span><br>Software Developer at UBC</li>
+                        <li><span>September 2021 - September 2023</span><br>Instructor at Musicworks Canada</li>
+                        <li><span>July 2023 - September 2023</span><br>Self-employed Super Villain</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2023-2028</span><br>Science and Business at the University of Waterloo</li>
                     </ul>
                 </div>
             </div>
@@ -55,5 +65,65 @@
     </div>
 </div>
 
+<!------------------contact--------------->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p>i2tian@uwaterloo.ca</p>
+            </div>
+            <div class="contact-right"></div>
+                <form name="submit-to-google-sheet">
+                  <input type="text" name="Name" placeholder="Your Name" required>
+                  <input type="email"name="email" placeholder="Your Email" required>
+                  <textarea name="Message" rows="6"placeholder="Your Message"></textarea>
+                  <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+    var tablinks= document.getElementsByClassName("tab-links")
+    var tabcontents= document.getElementsByClassName("tab-contents")
+    function opentab(tabname){
+        for (tablink of tablinks){
+            tablink.classList.remove("active-link")
+        }
+        for (tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab")
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+
+
+
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzqMhp4URyIEdAUoYTkV5ek5Enc66TDRmdf7YDV9udo_2cBw4l3vLfd6ZrqfOO9VYKu/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg= document.getElementById("msg")
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML="Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML=""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 </body>
 </html>
