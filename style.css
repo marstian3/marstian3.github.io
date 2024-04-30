@@ -1,59 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mars Tian</title>
-    <link rel="stylesheet" href="style.css"
-<head>
-<body> 
-<div id="header">
-    <div class="container">
-        <nav>
-            <img src="images/totoro.jpg" width="80" height="150"class="logo">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Education</a></li>
-                <li><a href="#">Experience</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="header-text">
-            <p>Nice to meet you!</p>
-            <h1>I'm <span>Mars </span> (Ivan) Tian</h1>
-        </div>
-    </div>
-<!----------about------------->
-</div>
-<div id="about">
-    <div class="container">
-        <div class="row">
-            <div class="about-col-1">
-                <img src="images/user.png" width="200" height="400">
-            </div>
-            <div class="about-col-2">
-                <h1 class="sub-title">About Me</h1>
-                <p> Hi! My name is Ivan and I just finished my first year as a Science and Business Co-op student at the University of Waterloo. 
-                    I made this website to improve my skills in web development, and to have some fun. I like to play badminton, make music on my violin, and read manga!</p>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: #000000;
+    color: #fff;
+}
+#header{
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/background.jpg);
+    background-size: 400px;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+.container{
+    padding: 20px 5%;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
-                <div class="tab-titles">
-                    <p class="tab-links active-link">Skills</p>
-                    <p class="tab-links">Experience</p>
-                    <p class="tab-links">Education</p>
-                </div>
-                <div class="tab-contents">
-                    <ul>
-                        <li><span>LOL/TFT</span><br>Emerald/Diamond</li>
-                        <li><span>Shorts/Tiktok</span><br>ivantuwu</li>
-                        <li><span>Chemistry/Physics</span><br>Making Bombs</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+nav ul li{
+    display:inline-table;
+    list-style: none;
+    margin: 50px 20px;
+}
+nav ul li a{
+    color:#fff;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+nav ul li a::after{
+    content:'';
+    width: 0;
+    height: 3px;
+    background: #07fff7;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+nav ul li a:hover::after{
+    width:100%;
+}
+.header-text{
+    margin-top: 5%;
+    font-size: 30px;
+}
+.header-text h1{
+    font-size: 60px;
+    margin-top: 20px;
+}
+.header-text h1 span{
+    color:#e03c2a;
+}
+/*-----------------about--------------*/
+#about{
+    padding: 80px 0;
+    color:rgb(76, 108, 108)
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.about-col-1{
+    flex-basis: 35%;
+}
+.about-col-1 img{
+    width: 100%;
+    border-radius: 15px;
+}
+.about-col-2{
+    flex-basis: 60%;
+}
 
-</body>
-</html>
+.sub-title{
+    font-size: 60px;
+    font-weight: 600;
+    color: azure;
+}
+
+.tab-titles{
+    display: flex;
+    margin: 20px 0 40px;
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: pointer;
+    position: relative;
+}
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background:#07fff7;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+.tab-links.active-link::after{
+    width: 50%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+.tab-contents ul li span{
+    color: #b54769;
+    font-size: 14px;
+}
