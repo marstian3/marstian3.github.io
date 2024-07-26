@@ -8,7 +8,8 @@ const pegs = [];
 const balls = [];
 const gravity = 1.5;
 const friction = 0.99;
-
+let elapsedTime = 0;
+const ballInterval = 2000; // 2 seconds in milliseconds
 class Peg {
     constructor(x, y) {
         this.x = x;
@@ -108,6 +109,12 @@ function initBalls() {
     const ball = new Ball(canvas.width / 2, 25);
     balls.push(ball);
 }
+
+function releaseBall() {
+    balls.push(new Ball(canvas.width / 2, 25));
+}
+
+setInterval(releaseBall, 1455);
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
