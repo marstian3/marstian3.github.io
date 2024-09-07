@@ -6,8 +6,8 @@ canvas.height = 650;
 
 const pegs = [];
 const balls = [];
-const gravity = 1.5;
-const friction = 0.99;
+const gravity = 1.0;
+const friction = 0.97;
 let elapsedTime = 0;
 const ballInterval = 2000; // 2 seconds in milliseconds
 class Peg {
